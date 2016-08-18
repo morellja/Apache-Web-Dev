@@ -1,0 +1,99 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My second web page</title>
+	<!--linking to external CSS file (within directory)-->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+	<!--Only use h1 once - main title on page-->
+	<h1>My first web page</h1>
+
+	<!--All other headers can be used multiple times-->
+    <h2>What this is</h2>
+	
+	<!--Paragraph - puts break between other content-->
+    <p>A simple page put together using HTML</p>
+
+    <h2>Why this is</h2>
+	<!--Unordered list - bullet points - Ordered list is <ol>-->
+    <ul>
+        <li>To learn HTML</li>
+        <li>To show off</li>
+        <li>Because I've fallen in love with my computer and want to give her some HTML loving.</li>
+    </ul>
+	
+	<h2>Where to find the tutorial</h2>
+	<!--a is hyperlink - href can be relative to current directory-->
+    <p><a href="http://www.htmldog.com">HTML Dog</a></p>
+	
+	<br>
+	<!--<em> is used to italicize, <strong> is used for bold-->
+    <p>This <em>is</em> my first web page</p>
+    <p>How exciting. <strong>Warning:</strong> level of excitement may cause head to explode.</p>
+
+	<table>
+		<tr>
+			<td>Row 1, cell 1</td>
+			<td>Row 1, cell 2</td>
+			<td>Row 1, cell 3</td>
+		</tr>
+		<tr>
+			<td>Row 2, cell 1</td>
+			<td>Row 2, cell 2</td>
+			<td>Row 2, cell 3</td>
+		</tr>
+		<tr>
+			<td>Row 3, cell 1</td>
+			<td>Row 3, cell 2</td>
+			<td>Row 3, cell 3</td>
+		</tr>
+		<tr>
+			<td>Row 4, cell 1</td>
+			<td>Row 4, cell 2</td>
+			<td>Row 4, cell 3</td>
+		</tr>
+	</table>
+	
+	<!--forms are used in conjunction with a prog lang to process inputs-->
+		<!--action tells the form where the contents will be sent-->
+		<!--method by default is 'get', but 'post' provides generally invisible information transmission-->
+	<form action="contactus.php" method="post">
+
+		<p>Name:</p>
+		<!--TEXT - text box-->
+			<!--name is the variable name needed for the form-handling script - associated with a particular 'value'-->
+		<p><input type="text" name="name" value="Your name"></p>
+
+		<p>Comments: </p>
+		<!--TEXTAREA - big text paragraph space-->
+		<p><textarea name="comments" rows="5" cols="20">Your comments</textarea></p>
+
+		<p>Are you:</p>
+		<!--RADIO - radio buttons-->
+		<p><input type="radio" name="areyou" value="male"> Male</p>
+		<p><input type="radio" name="areyou" value="female"> Female</p>
+		<p><input type="radio" name="areyou" value="hermaphrodite"> An hermaphrodite</p>
+		<p><input type="radio" name="areyou" value="asexual"> Asexual</p>
+		
+		<!--select is used with option for a dropdown box-->
+		<select>
+			<option>Option 1</option>
+			<option>Option 2</option>
+			<option value="third option">Option 3</option>
+		</select>
+		
+		<!--SUBMIT - button that submits the form to the action-->
+		<p><input type="submit"></p>
+
+	</form>
+
+	
+	<!--src can be relative to current directory. specifying w/h enables browser to know size so page doesn't jump around-->
+	<img src="http://www.htmldog.com/badge1.gif" width="120" height="90" alt="HTML Dog">
+
+	
+</body>
+</html>

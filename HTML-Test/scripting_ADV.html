@@ -1,0 +1,170 @@
+<!-- 
+	JAVASCRIPT: Object inheritance, using JavaScript or JQuery to create/edit elements, error handling, regular expressions
+	CANVAS (and modifying in JavaScript)
+-->
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+    <title>My scripting web page (advanced)</title>
+	<link rel="stylesheet" href="advanced_htmldog.css">
+	<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
+</head>
+
+<body>
+	<h1>My scripting web page (advanced)</h1>
+
+	<script>
+	
+		// INHERITANCE - constructor pattern
+		var Person = function (name) {
+			this.name = name;
+		};
+		// Person object created using NEW keyword
+		var tom = new Person('tom');
+		// To add a new property/method to an existing object, so only the particular object (tom) gets modified...
+		tom.nationality = "Dutch";
+		// To add a new property/method to an existing prototype, so that all inherited objects gain the property...
+		Person.prototype.say = function (words) {
+			alert(this.name + ' says "' + words + '"');
+		};
+		tom.say("I'm " + tom.nationality);
+		
+		
+		// ELEMENTS - using JavaScript to create, modify, and insert elements
+			// creates a div, adds some text to it and appends it as the last element in the body (equiv to <div class="note">Sup, y'all?</div> )
+		var div = document.createElement('div'); 	// createElement - used with an HTML tag to create the element
+		div.textContent = "Sup, y'all?";			
+		div.setAttribute('class', 'note');
+		document.body.appendChild(div);
+		// all elements have the 'appendChild' method, so it is possible to append to any:
+		var span = document.createElement('span');
+		if (span.textContent) {		// !*#!*# only doing this because IE doesn't support textContent, only an equivalent property, innerText
+			span.textContent = "Hello!";
+		} else if (span.innerText) {
+			span.innerText = "Hello!";
+		}
+		div.appendChild(span);
+		
+		// Removing an element - all elements have parent nodes, so removing them is as simple as:
+		div.parentNode.removeChild(div);
+		
+		// ELEMENTS - using JQuery instead
+		var div = $('<div/>').text("Sup, y'all?").appendTo(document.body);
+		$('<span/>').text('Hello!').appendTo(div);
+			
+	</script>
+	
+	
+	<!-- CANVAS - HTML5 specific for drawing 2/3-D (2-D demoed here, but 3-D technology is called WebGL) -->
+	<canvas></canvas>
+	<script>
+		var canvas = document.querySelector('canvas'),
+			ctx = canvas.getContext('2d'); 	// grab hold and retrieve particular context (either '2d' or 'webgl')
+		//ctx.fillRect(10, 10, 10, 10);		// draws black square
+		
+		
+		// Animation - pixels drawn and layered until erased, using 'clear' - so must repeatedly clear canvas and redraw scene
+		var resize = function () {
+		  canvas.width = window.innerWidth;
+		  canvas.height = window.innerHeight;
+		};
+		window.addEventListener('resize', resize);
+
+		window.addEventListener('load', function () {
+
+		  resize();
+
+		  var pos, vel;
+		  pos = {
+			x: 10,
+			y: 10
+		  };
+		  vel = {
+			x: 1,
+			y: 1
+		  };
+
+		  var loop = function () {
+			ctx.clearRect(0, 0, canvas.width, canvas.height); // clear entire canvas before each frame
+			pos.x += vel.x;
+			pos.y += vel.y;
+			if (pos.x < 5 || pos.x > canvas.width - 5) {
+			  vel.x *= -1;
+			}
+			if (pos.y < 5 || pos.y > canvas.height - 5) {
+			  vel.y *= -1;
+			}
+			ctx.fillRect(pos.x - 5, pos.y - 5, 10, 10);
+		  };
+
+		  setInterval(loop, 1000 / 60);
+		});
+
+	</script>
+	
+	
+	<!-- 
+		LOCAL STORAGE using JavaScript and JSON 
+			can only be read client-side (browser and JavaScript). so if server-side needs data, may want to use cookies.
+	-->
+	<script>
+		localStorage.setItem('name', 'tom'); // 1st arg: ID that will be used later to retrieve data. 2nd arg: data to store (in string form only)
+		var name = localStorage.getItem('name');
+		
+		// for storing OBJECTS, need to convert to string, so use JSON
+		localStorage.setItem('user', JSON.stringify({
+			username: 'htmldog',
+			api_key: 'abc123xyz789'
+		}));
+		var user = JSON.parse(localStorage.getItem('user'));
+	
+	</script>
+	
+	
+	<!-- 
+		ERRORS and EXCEPTIONS
+	-->
+	<script>
+		try { // won't prevent continued code execution if an error is produced here
+			JSON.parse("a"); // Produces a SyntaxError
+		} catch (error) {
+			// Handle the error
+			alert(error.message);
+		}
+	</script>
+
+	
+	<!-- 
+		REGULAR EXPRESSIONS - used for searching and matching strings - defined in JS as being between '/' and '/'
+	-->	
+	<script>
+		var regex = /^[a-z\s]+$/; 	// matches strings made of lowercase letters and whitespace from beginning to end
+										// The caret (“^”) indicates the start of the string, and the brackets indicate that 
+										// anything between the opening and closing brace - letter a to z (“a-z”), lowercase, 
+										// and white-space, indicated by the special “\s” character - can be repeated one or  
+										// more times up to the end of the string, indicated by the dollar (“$”) symbol.
+		
+		// use regular expressions for VALIDATING strings for certain conditions
+		var lowerCaseString = 'some characters';
+		if (lowerCaseString.match(regex)) {	// '.match' produces 'true' if the regular expression matches the string it is called onabort
+			alert('Yes, all lowercase');
+		}
+		// regular expressions can also be used for REPLACING text
+		var text = "There is everything and nothing.";
+		text = text.replace(/(every|no)thing/g, 'something'); 	// matches the word 'everything' and 'nothing' and replaces 
+																// all instances with 'something'. The 'g' after '/' is the global flag
+																// meaning the expression should match all occurrences, rather than just the first
+		text = "Everything and nothing.";
+		text = text.replace(/(every|no)thing/gi, "something");	// uses the case-insensitive flag ('i') so it matches capitals as well
+		
+
+		
+		
+	
+	</script>
+	
+</body>
+</html>

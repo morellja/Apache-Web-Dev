@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My fourth web page</title>
+    <link rel="stylesheet" href="advanced_htmldog.css">
+	
+	<!--CONDITIONAL STATEMENTS - mainly used for IE8 and below (lte means less than or equal to)--> 
+	<!--[if IE lte 7]><link href="stupidie.css" rel="stylesheet"><![endif]-->
+
+</head>
+
+<body>
+	<h1>My fourth web page</h1>
+	
+	<!--TIME
+		datetime can be year-month-day, or year-month, a time (24:00 hour clock), or a combination like 2052-11-21 09:30
+	-->
+	<p>Written by Doctor Who on <time datetime="2052-11-21">Thursday 21st November 2052</time>.</p>
+	
+	<blockquote>
+		<!--MARK - highlight words-->
+		<p>He wants to play with his <mark>Legos</mark></p>
+	</blockquote>
+
+	<table>
+		<!--CAPTION-->
+		<caption>Locust mating habits</caption>
+		<!--COLUMNS - define table columns and style table by columns rather than rows-->
+		<colgroup>
+			<col>
+			<col class="alternative">
+			<col>
+		</colgroup>
+		<tr>
+			<td>This</td>
+			<td>That</td>
+			<td>The other</td>
+		</tr>
+		<tr>
+			<td>Ladybird</td>
+			<td>Locust</td>
+			<td>Lunch</td>
+		</tr>
+	</table>
+
+	<!--INPUT TYPES - advanced - also STILL NOT SUPPORTED IN ALL CASES ON ALL BROWSERS!!!!! -->
+	<input type="search" name="search"> 		<!-- CSS is adding a magnifying glass picture-->
+	<input type="tel" name="telephone_number">
+	<input type="url" placeholder="www.yes.com" name="web_address">		<!-- PLACEHOLDERS are optional in inputs-->
+	<input type="email" placeholder="you@somewhere.com" name="email_address">	<!-- CSS is adding validation to check the field-->
+	<input name="color" type="color" value="#ff8800">
+
+	<!-- Number type - can add step value to increment/decrement arrows, and min and max if desired-->
+	<input type="number" name="quantity" step="2" min="20" max="30"> 
+	
+	<!-- Range type - horizontal sliding bar with default 0-100 range-->
+	<input type="range" name="temperature" min="15" max="25" step="0.5" value="18.5">
+	
+	<!-- DATALISTS - provide suggestions that accompany a text field-->
+	<input name="country" list="country_name">
+	<datalist id="country_name">
+		<option value="Afghanistan">
+		<option value="Albania">
+		<option value="Algeria">
+		<option value="Andorra">
+		<option value="Armenia">
+		<option value="Australia">
+		<option value="Austria">
+		<option value="Azerbaijan">
+		<!-- etc. -->
+	</datalist>
+	
+	<!-- Dates and times types: "datetime", "date", "month", "week", "time", "datetime-local"
+	
+
+</body>
+</html>

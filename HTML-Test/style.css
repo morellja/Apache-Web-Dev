@@ -1,0 +1,54 @@
+/* This looks solely at HTML selectors - those that represent a tag */
+
+
+p {
+	/* COLOR
+		all the same: red, rgb(255,0,0), rgb(100%,0%,0%), #ff0000, #f00
+		predefined colors: aqua, black, blue, fuchsia, gray, green, lime, maroon, navy, olive, orange, purple, red, silver, teal, white, yellow, transparent 
+	*/
+    color: red;
+	letter-spacing: 0.5em;
+    word-spacing: 2em;
+    line-height: 1.5;
+    text-align: center;
+}
+
+h2 {
+    font-size: 1.5em;
+    background-color: #ccc;
+	/* 
+		BOX MODEL: margin contains border contains padding contains element
+		can set margins/padding individually: margin-top, margin-bottom, margin-left, margin-right (same for padding) 
+	*/
+    margin: 20px;
+    padding: 40px;
+	border-style: dashed;
+    border-width: 3px;
+    border-left-width: 10px;
+    border-right-width: 10px;
+    border-color: red;
+
+}
+
+
+a {
+    color: blue;
+	/* FONT WEIGHT
+		boldness
+		bolder, lighter, 100, 200, 300, 400 (same as normal), 500, 600, 700 (same as bold), 800 or 900
+	*/
+	font-weight: normal;
+}
+
+body {
+	/* FONT FAMILY
+		fonts need to be on user computer, so specifying several allows a search, in order, for others if some missing
+		multiple-worded fonts need to be put in quotes
+	*/
+	font-family: arial, helvetica, serif, "Times New Roman";
+    
+	/* px: pixels, em: x the current size, pt: point, %, cm, mm, in*/
+	font-size: 14px;
+    color: navy;
+	background-color: gray;
+}

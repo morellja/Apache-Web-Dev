@@ -1,0 +1,86 @@
+/* Class and ID selectors, mouse hovering/click, nesting properties, background images, positioning things on the page*/
+
+
+/* ID SELECTOR - # in CSS corresponds to 'id' in html - used to identify single element */
+#top {
+    background-color: #ccc;
+    padding: 20px
+}
+
+/* CLASS SELECTOR - '.' in CSS corresponds to 'class' in html - used to identify multiple elements*/
+.intro {
+    color: red;
+    font-weight: bold;
+}
+
+.alternative{
+	background-color: red;
+}
+
+/* Specifies only h1 within 'top' ID */
+#top h1 {
+    color: #ff0;
+}
+
+/* Separate with commas to add properties to multiple selectors */
+h2, .thisOtherClass, .yetAnotherClass {
+    color: blue;
+}
+
+/* Differentiating visited/unvisited hyperlinks */
+a:link {
+    color: blue;
+}
+a:visited {
+    color: purple;
+}
+
+/* Reacting to when an element is activated or mouse hovers over it */
+a:active {
+    color: red;
+}
+a:hover {
+    text-decoration: none;
+    color: blue;
+    background-color: yellow;
+}
+
+/* DISPLAY 
+	- INLINE */
+li { display: inline }
+	/* BLOCK - makes a box standalone */
+#navigation a {
+    display: block;
+    padding: 20px 10px;
+}
+	/* NONE - would hide and remove (vs visibility: hidden - which would hide, but keep the box/place holder)
+	
+
+/* BACKGROUND IMAGES - can be used for most html elements (not just background)*/
+body {
+	/* this combines a number of properties into a shorthand version */
+		/*
+			background-color
+			background-image: location of the image
+			background-repeat: can be 'repeat', 'repeat-y', 'repeat-x', 'no-repeat'
+			background-position: can be 'top', 'center', 'bottom', 'left', 'right', a length, percentage or combo of words ('top right')
+		*/
+	background: white url(http://www.htmldog.com/images/bg.gif) no-repeat top right;
+}
+
+/* POSITION - can be:
+	static - default
+	relative - like static, but can be offset from its original position with properties (top, right, bottom, left)
+	absolute - place box anywhere on page with top, right, bottom, left
+	fixed - like absolute, but will position box in reference to window, not page (stays put when scrolling)
+*/
+#navigation {
+    position: absolute;
+    top: 0;
+    left: 10in;
+    width: 200px;
+}
+#content {
+    margin-left: 200px;
+}
+

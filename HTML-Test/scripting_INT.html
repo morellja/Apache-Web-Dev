@@ -1,0 +1,143 @@
+<!-- 
+	JAVASCRIPT: Getting an element, events and callbacks  
+	AJAX: XMLHttpRequest  
+	JSON  
+	JQUERY: setters, getters, context, AJAX helper methods, tricks 
+-->
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+    <title>My scripting web page (intermediate)</title>
+	<link rel="stylesheet" href="advanced_htmldog.css">
+	
+	<!-- ADDING JQUERY to a page. -->
+		<!-- Either download it from jquery.com or include it from a content delivery network, like CDNJS (as below) -->
+	<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
+</head>
+
+<body>
+	<h1>My scripting web page (intermediate)</h1>
+
+	<nav id="main_nav">
+		<ul>
+			<li><a href="/tutorials/">Tutorials</a></li>
+			<li><a href="/reference/">Reference</a></li>
+			<li><a href="/articles/">Articles</a></li>
+			<li><a href="/about/">About us</a></li>
+		</ul>
+	</nav>
+	
+	<p class="example">This is my recipe for making curry purely with chocolate</p>
+	
+	<script>
+		// GETTING AN ELEMENT - access DOM from JavaScript, using the 'document' object
+			// allows code to interact with the contnet
+		// BY ID
+		var pageHeader = document.getElementById('main_nav');
+		// doing this now allows the element to be manipulated (size, color, declaring other code to handle the element clicked on, etc.)
+		
+		// BY TAG NAME
+		var links = document.getElementsByTagName("a"); // returns a NodeList - an array of the DOM elements
+		var i;
+		for (i = 0; i < links.length; i++) {
+			links[i].color = "green"
+		}
+		
+		// BY CLASS NAME
+		var x = document.getElementsByClassName("example");	// returns a NodeList
+		for (i = 0; i < x.length; i++) {
+			x[i].style.backgroundColor = "red";
+		}
+		
+		
+		// EVENTS AND CALLBACKS
+		var i = 1;
+		var handleClick = function (event) {				// THE CALLBACK FUNCTION
+			// do something!
+			if(i%2 == 0){
+			
+			}else{
+			
+			}
+		};
+		var button = document.querySelector('#big-button');	// THE ELEMENT 
+		button.addEventListener('click', handleClick);		// THE EVENT LISTENER - first arg is name of event to listen for, 2nd arg is the callback function
+																// *#*#* IE8 and earlier doesn't support- have to use button.attachEvent('onclick', handleclick);
+		
+		// AJAX - XMLHttpRequest - to retrieve new content for a page (can load HTML, JSON, XML, and plain text over HTTP and HTTPS)
+		var req = new XMLHttpRequest();
+		req.onload = function (event) { . . . };	// specify a callback function, called when data is loaded
+		req.open('get', 'some-file.txt', true);		// 1. HTTP method to get the data. 2. URL to fetch from. 3. asynchronous? - means request is fired off and code exec continues until response from server causes onload callback to fire - bool
+		req.send();									// fire off the request for data
+
+		// JSON - not actually JavaScript - text formatting rules for storing and transferring data. name-value pairs
+		// data is converted to/from JSON using methods 'stringify' and 'parse' respectively
+		var jsonString = JSON.stringify({	// becomes {"make": "McLaren", "model": "MP4-12C", "miles": 5023 }
+			make: "McLaren",
+			model: "MP4-12C",
+			miles: 5023
+		});
+		var car = JSON.parse(jsonString);	// becomes a usable JavaScript object
+		car.model = "P1";					// so its properties can be set now
+		
+		// JQUERY - library used to allow modification and control of the DOM - syntax based around the '$' symbol (called the selector function)
+			// hides differences across browsers
+		$('.btn').click(function () {	// attaches a click handler to all elements of class 'btn'
+			// do something
+		});
+		
+		// chainable syntax - works bc for any kind of 'setting' method, JQuery returns the same thing as the '$' does - a JQuery wrapper around the element.
+		$('.note').css('background', 'red').height(100); 
+		
+		// JQuery GETTERS
+		// can use methods like .css and .height as getters as well - just leave out the values:
+		var currentHeight = $('.note').height(),
+			currentColor = $('.note').css('color');
+			
+		// JQuery CONTEXT
+		// limit the area of the DOM by passing a second argument - a DOM element, a string selector, or a JQuery object
+		var $header = $('header'),
+			$headerBoxes = $('.note', $header); // note the $ in front of the vars - they are being saved as JQuery objects
+
+		// JQuery AJAX helper methods ($.get, $.post, $.ajax)
+		$.ajax({
+			url: '/data.json',
+			method: 'GET',
+			success: function (data) {
+				console.log(data);
+			}
+		});		// the main method, allowing for manual construction of the AJAX request
+		
+		// $.get and $.post are just shortcut methods - can also provide an error callback (in any of the AJAX methods)
+		$.get('/data.json', function (data) {
+			console.log(data);
+		}).fail(function () {
+			// Uh oh, something went wrong
+		});
+		$.post('/save', { username: 'tom' }, function (data) {
+			console.log(data);
+		}).fail(function () {
+			// Uh oh, something went wrong
+		});
+		
+		// JQuery - EXTRA TRICKS
+		// run JavaScript only when the DOM is loaded and ready (but before stylesheets fully loaded) - like move or create elements
+		$(window).ready(doSomething);
+		$(doSomething); // shortened version of above - doSomething is a JavaScript function
+		
+		// run JavaScript after page is fully loaded (all stylesheets and images downloaded)
+		$(window).load(doSomething);
+		
+		// type checking (these listed below all return 'true'
+		$.isArray([1, 2, 3]);
+		$.isFunction(function () { });
+		$.isNumeric(10);
+		$.isPlainObject({ name: 'Tom' });
+		
+		
+	</script>
+</body>
+</html>

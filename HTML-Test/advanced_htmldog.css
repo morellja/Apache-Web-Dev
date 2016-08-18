@@ -1,0 +1,70 @@
+
+/* adding picture to search bar */
+input[type=search] { background: url(magnifyingglass.png) right no-repeat) }
+
+/* VALID/INVALID - pseudo classes that check validity, based on type
+	-can be used with a number of input types
+*/
+input[type=email]:valid { background: green }
+input[type=email]:invalid { background: red }
+
+
+#top {
+    background-color: #ccc;
+    padding: 20px
+}
+
+.intro {
+    color: red;
+    font-weight: bold;
+}
+
+.alternative{
+	background-color: red;
+}
+
+#top h1 {
+    color: #ff0;
+}
+
+h2, .thisOtherClass, .yetAnotherClass {
+    color: blue;
+}
+
+a:link {
+    color: blue;
+}
+a:visited {
+    color: purple;
+}
+
+a:active {
+    color: red;
+}
+a:hover {
+    text-decoration: none;
+    color: blue;
+    background-color: yellow;
+}
+
+li { display: inline }
+
+#navigation a {
+    display: block;
+    padding: 20px 10px;
+}
+
+body {
+	background: white url(http://www.htmldog.com/images/bg.gif) no-repeat top right;
+}
+
+#navigation {
+    position: absolute;
+    top: 0;
+    left: 10in;
+    width: 200px;
+}
+#content {
+    margin-left: 200px;
+}
+

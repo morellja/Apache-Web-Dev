@@ -1,0 +1,90 @@
+<!-- JAVASCRIPT: Variables, comparitors, conditionals, looping, functions, objects -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My scripting web page (beginner)</title>
+    <link rel="stylesheet" href="advanced_htmldog.css">
+</head>
+
+<body>
+	<h1>My scripting web page (beginner)</h1>
+	
+	<!-- internal scripting puts JavaScript inside the script element -->
+	<script>
+		alert("Hello, world.");
+		
+		// VARIABLE declaration and initializations
+		var surname;
+		var age, piecesOfFruit;
+		var apples = 5, pears = 10;
+		surname = prompt('Greetings friend, may I engquire as to your surname?'); //pop up box that prompts user for input
+		age = 43;
+		
+		// Doing MATH - standard operators
+		piecesOfFruit = apples + pears;
+		
+		//EQUALITY - ===, !== are strict, ==, != are type-converting
+		0 == false   // true
+		0 === false  // false, because they are of a different type
+		1 == "1"     // true, auto type coercion
+		1 === "1"    // false, because they are of a different type
+		null == undefined // true
+		null === undefined // false
+		'0' == false // true
+		'0' === false // false
+		
+		// CONDITIONALS, LOOPING
+		if (43 < 2) {
+			// 
+		} else {
+			// 
+		}
+		
+		var i = 1;
+		while (i < 10) {
+			alert(i);
+			i = i + 1;
+		}
+		
+		for (var i = 1; i < 10; i++) {
+			alert(i);
+		}
+		
+		// FUNCTIONS - creating functions
+		var add = function(a, b){
+			return a + b;
+		};
+		// calling functions
+		var result = add(apples, pears);
+		
+		// OBJECTS
+		var jedi = {
+			name: "Yoda", // property (variable)
+			age: 899,
+			talk: function () { alert("another... Sky... walk..."); } // method
+		};
+		// retrieving and modifying object data
+		jedi.name = "Mace Windu";
+		jedi.talk(); //produces alert box
+		
+		// ARRAYS
+		// array[x] syntax - indexed from 0
+		var emptyArray = [];
+		var shoppingList = ['Milk', 'Bread', 'Beans'];
+		shoppingList[1] = 'Cookies'; // shoppingList is now ['Milk', 'Cookies', 'Beans']
+		// array methods:
+			var len = shoppingList.length
+			shoppingList.push('A new car'); 	// push onto end of array
+			var lastItem = shoppingList.pop();	// pop off end of array
+
+
+
+	</script>
+	
+	<!-- External scripting links to a .js file (similar to linking to .css file) -->
+	<script src="script.js"></script>
+	
+	
+</body>
+</html>
